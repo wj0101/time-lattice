@@ -56,7 +56,7 @@ export default class List extends Component {
         <div className="time-lattice-button-wrapper">
           <span className="time-lattice-tips">{this.props.tips}</span>
           <DeselectAll className="time-lattice-button">
-            <button>清除</button>
+            <div className="text">清除</div>
           </DeselectAll>
         </div>
       </Fragment>

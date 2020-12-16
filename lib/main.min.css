@@ -2372,7 +2372,7 @@ html {
   color: #6f7b85;
 }
 
-.time-lattice-button button {
+.time-lattice-button .text {
   border: none;
   background: transparent;
   color: #00a5aa;
