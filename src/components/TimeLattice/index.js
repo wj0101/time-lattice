@@ -227,7 +227,7 @@ export default class TimePeriodSelector extends Component {
       data.index = i;
 
       // 设置默认选中
-      if (this.props.defaultSelected && this.props.defaultSelected.includes(i - 48)) {
+      if (this.props.defaultSelected && this.props.defaultSelected.includes(i)) {
         data.isSelected = true;
         selectedItems.push({ props: { value: data } });
       }

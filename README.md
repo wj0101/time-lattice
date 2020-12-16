@@ -18,6 +18,7 @@
 
 ## 参数
 #### onChange 变化时回调函数,返回选中的格子索引，可在antd Form中使用
+#### defaultSelected 设置默认选中的格子索引 []
 #### onSelectionFinish  {item => {column: 0, row:0, index: 0}}
 #### index为格子下标，从左到右，从上到下
 #### column代表时间点，从0开始
