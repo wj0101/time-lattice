@@ -4,10 +4,10 @@ import cs from 'classnames';
 
 class Item extends Component {
   render() {
-    const { selectableRef, isSelected, isSelecting } = this.props
+    const { selectableRef, title } = this.props
 
-    return <div className={cs('time-period-selector-item', { selected: isSelected, selecting: isSelecting, 'not-selectable': this.props.title })} ref={selectableRef}>
-      {this.props.title}
+    return <div className={cs('time-lattice-item', { 'not-selectable': title })} ref={selectableRef}>
+      {title}
     </div>
   }
 }

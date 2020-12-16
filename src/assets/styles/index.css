@@ -1,4 +1,4 @@
-.time-period-selector-wrapper {
+.time-lattice-wrapper {
   width: 576px;
   overflow: hidden;
   font-size: 0;
@@ -10,7 +10,7 @@
   flex-direction: row;
   align-items: center;
 }
-.time-period-selector-day-wrapper {
+.time-lattice-day-wrapper {
   display: inline-block;
   width: 55px;
   font-size: 14px;
@@ -20,7 +20,7 @@
   padding-top: 24px;
 }
 
-.time-period-selector-day-wrapper:after {
+.time-lattice-wrapper:after {
   width: 2px;
   height: 2px;
   background: #fff;
@@ -31,7 +31,7 @@
   z-index: 9001;
 }
 
-.time-period-selector-item {
+.time-lattice-item {
   box-sizing: border-box;
   width: 24px;
   display: inline-block;
@@ -44,7 +44,7 @@
   color: #6f7b85;
   user-select: none;
 }
-.time-period-selector-date {
+.time-lattice-date {
   box-sizing: border-box;
   width: 12px;
   display: inline-block;
@@ -62,51 +62,51 @@
   flex-direction: column;
 }
 
-.time-period-selector-date.selected {
+.time-lattice-date.selected {
   background: #00a5aa;
   color: white;
   border-color: #00a5aa;
   border: 1px solid rgba(240, 241, 245, 1);
 }
-.time-period-selector-date:hover {
+.time-lattice-date:hover {
   background: #ebebeb;
   color: white;
   border-color: #ebebeb;
   border: 1px solid rgba(240, 241, 245, 1);
 }
-.time-period-selector-date:nth-child(n + 289) {
+.time-lattice-date:nth-child(n + 289) {
   border-bottom: 1px solid rgba(240, 241, 245, 1);
 }
-.time-period-selector-item:nth-child(n + 175) {
+.time-lattice-item:nth-child(n + 175) {
   border-bottom: 1px solid rgba(240, 241, 245, 1);
 }
 
-.time-period-selector-item.selected {
+.time-lattice-item.selected {
   background: #00a5aa;
   color: white;
   border-color: #00a5aa;
 }
 
-.time-period-selector-item.selecting {
+.time-lattice-item.selecting {
   background: rgba(246, 245, 255, 1);
   color: white;
   border-color: rgba(246, 245, 255, 1);
 }
 
-.time-period-selector-button-wrapper {
+.time-lattice-button-wrapper {
   overflow: hidden;
   padding-top: 10px;
   padding-right: 10px;
 }
-.time-period-selector-button {
+.time-lattice-button {
   float: right;
 }
-.time-period-selector-tips {
+.time-lattice-tips {
   font-size: 14px;
   color: #6f7b85;
 }
 
-.time-period-selector-button button {
+.time-lattice-button button {
   border: none;
   background: transparent;
   color: #00a5aa;
@@ -124,17 +124,17 @@
   border: 1px dashed grey;
 }
 
-.time-period-selector-day {
+.time-lattice-day {
   height: 24px;
   line-height: 24px;
 }
 
-.time-period-selector-time {
+.time-lattice-time {
   display: inline-block;
   width: 100px;
 }
 
-.time-period-selecto-ex {
+.time-lattice-ex {
   font-size: 14px;
   color: #2f2f2f;
   margin: 0;
@@ -143,14 +143,14 @@
   max-width: 685px;
 }
 
-.time-period-selector-container {
+.time-lattice-container {
   padding: 0 0 10px 10px;
   border: 1px solid rgba(240, 241, 245, 1);
   display: inline-block;
   max-width: 707px;
 }
 
-.time-period-selector-title-wrapper {
+.time-lattice-title-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -161,7 +161,7 @@
   padding-right: 3px;
 }
 
-.time-period-selector-title {
+.time-lattice-title {
   font-size: 14px;
   color: #2f2f2f;
   text-align: center;
@@ -169,6 +169,6 @@
   padding: 10px 1px;
   border-right: 1px solid rgba(240, 241, 245, 1);
 }
-.time-period-selector-title:last-child{
+.time-lattice-title:last-child{
   border-right: none
 }

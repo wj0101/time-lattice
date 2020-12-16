@@ -16,7 +16,7 @@ class Item extends Component {
 
     return <Popover content={this.generateTimePeriodExhibition(value)}>
           <div 
-            className={cs('time-period-selector-date', 
+            className={cs('time-lattice-date', 
             { selected: isSelected, selecting: isSelecting, 'not-selectable': this.props.title })} 
             ref={selectableRef}>
           </div>

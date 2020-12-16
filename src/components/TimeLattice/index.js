@@ -69,12 +69,16 @@ export default class TimePeriodSelector extends Component {
     } else {
       tips = '拖动鼠标选择时间段'
     }
+    let newarr = Array.prototype.concat.apply([], groupedData);
+    let indexList = newarr.map(item => item.index)
     this.setState({
       groupedData,
       tips
     }, () => {
       this.generrateTimeObject()
     })
+    this.props.onChange.call(this, indexList)
+
   }
 
   // 给父组件传参，抹平index差异
@@ -154,10 +158,9 @@ export default class TimePeriodSelector extends Component {
 
   // 生成展示
   generateTimePeriodExhibition = () => {
-    console.log(this.state.timeObj)
     return Object.keys(this.state.timeObj).map((key, i) => {
       return (
-        <p key={i} className="time-period-selecto-ex"><span className="time-period-selector-time">{key}</span>{this.generateTime(this.state.timeObj[key])}</p>
+        <p key={i} className="time-lattice-ex"><span className="time-lattice-time">{key}</span>{this.generateTime(this.state.timeObj[key])}</p>
       )
     })
   }
@@ -245,10 +248,10 @@ export default class TimePeriodSelector extends Component {
   render() {
     return (
       <Fragment>
-        <div className="time-period-selector-title-wrapper">
+        <div className="time-lattice-title-wrapper">
           <div className="time-date-title-name">星期/时间</div>
-          <div className="time-period-selector-title">00:00-12:00</div>
-          <div className="time-period-selector-title">12:00-24:00</div>
+          <div className="time-lattice-title">00:00-12:00</div>
+          <div className="time-lattice-title">12:00-24:00</div>
         </div>
         <SelectableGroup
           enableDeselect

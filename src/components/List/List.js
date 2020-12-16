@@ -15,7 +15,7 @@ export default class List extends Component {
   generateDay = () => {
     const days = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
     return days.map(day => {
-      return (<div key={day} className="time-period-selector-day">{day}</div>)
+      return (<div key={day} className="time-lattice-day">{day}</div>)
     })
   }
 
@@ -29,11 +29,11 @@ export default class List extends Component {
     return (
       <Fragment>
         <div className="warpper-date">
-          <div className="time-period-selector-day-wrapper">
+          <div className="time-lattice-day-wrapper">
             {this.generateDay()}
           </div>
           <div className="date-time-list">
-            <div className="time-period-selector-wrapper">
+            <div className="time-lattice-wrapper">
               {this.props.hourList.map((item, i) => (
                 <HourItem
                   key={i}
@@ -42,7 +42,7 @@ export default class List extends Component {
                 />
               ))}
             </div>
-            <div className="time-period-selector-wrapper">
+            <div className="time-lattice-wrapper">
               {this.props.items.map((item, i) => (
                 <Item
                   key={i}
@@ -53,9 +53,9 @@ export default class List extends Component {
             </div>
           </div>
         </div>
-        <div className="time-period-selector-button-wrapper">
-          <span className="time-period-selector-tips">{this.props.tips}</span>
-          <DeselectAll className="time-period-selector-button">
+        <div className="time-lattice-button-wrapper">
+          <span className="time-lattice-tips">{this.props.tips}</span>
+          <DeselectAll className="time-lattice-button">
             <button>清除</button>
           </DeselectAll>
         </div>

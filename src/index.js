@@ -4,7 +4,7 @@ import TimeLattice from './components/timeLattice';
 class App extends React.Component {
   render() {
     return (
-      <div className="time-period-selector-container">
+      <div className="time-lattice-container" id={this.props.id}>
         <TimeLattice {...this.props} />
       </div>
     )

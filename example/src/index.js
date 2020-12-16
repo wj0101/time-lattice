@@ -5,11 +5,11 @@ import 'core-js/fn/map'
 import 'core-js/fn/set'
 import React from 'react';
 import { render } from 'react-dom';
-import TimeLattice from '../../src/components/timeLattice';
+import TimeLattice from '../../src/components/TimeLattice';
 import '../../src/assets/styles/index.css'
 const App = () => (
-  <div className="time-period-selector-container">
-    <TimeLattice  onSelectionFinish={(items) => { console.log(items) }} />
+  <div className="time-lattice-container">
+    <TimeLattice  onSelectionFinish={(items) => { console.log(items) }} onChange={index => { console.log(index)}}/>
   </div>
 );
 render(<App />, document.getElementById("root"));
