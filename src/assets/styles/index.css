@@ -140,14 +140,15 @@
   margin: 0;
   margin-top: 10px;
   line-height: 1.5;
-  max-width: 685px;
+  max-width: 643px;
+  padding-right:10px ;
 }
 
 .time-lattice-container {
   padding: 0 0 10px 10px;
   border: 1px solid rgba(240, 241, 245, 1);
   display: inline-block;
-  max-width: 707px;
+  max-width: 643px;
 }
 
 .time-lattice-title-wrapper {
