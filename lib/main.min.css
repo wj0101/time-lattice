@@ -2334,6 +2334,13 @@ html {
   border-color: #00a5aa;
   border: 1px solid rgba(240, 241, 245, 1);
 }
+.time-lattice-date.selected:hover {
+  background: #00a5aa;
+  color: white;
+  border-color: #00a5aa;
+  opacity: .7;
+  border: 1px solid rgba(240, 241, 245, 1);
+}
 .time-lattice-date:hover {
   background: #ebebeb;
   color: white;
