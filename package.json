@@ -1,5 +1,5 @@
 {
-  "name": "time-lattice",
+  "name": "react-time-lattice",
   "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
@@ -41,6 +41,14 @@
     "example": "example",
     "lib": "lib"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wj0101/time-lattice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wj0101/time-lattice/issues"
+  },
+  "homepage": "https://github.com/wj0101/time-lattice/blob/main/README.md",
   "description": "",
   "babel": {
     "presets": [
