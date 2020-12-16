@@ -1,5 +1,7 @@
 # time-lattice
 #### 7*24小时的时间选择器，支持拖拽多选
+#### yarn add react-time-lattice
+#### npm i react-time-lattice
 
 #### items => []
 
