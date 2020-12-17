@@ -1,6 +1,6 @@
 {
   "name": "react-time-lattice",
-  "version": "1.0.191",
+  "version": "1.0.192",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

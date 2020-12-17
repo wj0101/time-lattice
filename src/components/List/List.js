@@ -2,7 +2,7 @@ import React, { Component, Fragment,memo } from 'react'
 import { DeselectAll } from 'react-selectable-fast'
 import Item from '../Item/Item';
 
-const List = memo(props => {
+const List = props => {
   const { hourList,items,tips } = props
 
   const generateDay = () => {
@@ -43,8 +43,6 @@ const List = memo(props => {
       </DeselectAll>
     </div>
   </Fragment>
-});
-
-
+}
 export default List
 
