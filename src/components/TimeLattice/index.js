@@ -79,6 +79,8 @@ class TimeLattice extends Component {
       )
     })
   }
+
+  // 生成每个时间段展示
   generateTime = (source) => {
     return source.map(item => {
       let column = item[item.length - 1].column
@@ -217,7 +219,7 @@ class TimeLattice extends Component {
           <div className="time-lattice-title">12:00-24:00</div>
         </div> */}
          <SelectableGroup
-            scrollContainer="html"
+            // scrollContainer="html"
             enableDeselect={true}
             tolerance={0} 
             globalMouse={true}
