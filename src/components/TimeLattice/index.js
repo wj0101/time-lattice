@@ -235,10 +235,9 @@ class TimeLattice extends Component {
         </div>
          <SelectableGroup
             ref={this.getSelectableGroupRef}
-            className="main"
-            clickClassName="tick"
             enableDeselect
             tolerance={true}
+            globalMouse={true}
             allowClickWithoutSelected={true}
             onSelectionFinish={this.handleSelectionFinish}
             ignoreList={['.not-selectable']}
