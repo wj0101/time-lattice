@@ -9,7 +9,7 @@ import TimeLattice from '../../src/components/TimeLattice';
 import '../../src/assets/styles/index.css'
 const App = () => (
   <div className="time-lattice-container">
-    <TimeLattice  defaultSelected={[48]} onSelectionFinish={(items) => { console.log(items) }} onChange={index => { console.log(index)}}/>
+    <TimeLattice defaultSelected={[48]} onSelectionFinish={(items) => { console.log(items) }} onChange={index => { console.log(index)}}/>
   </div>
 );
 render(<App />, document.getElementById("root"));

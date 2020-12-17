@@ -8,7 +8,6 @@
 .warpper-date{
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 .time-lattice-day-wrapper {
   display: inline-block;
@@ -65,7 +64,11 @@
 .time-lattice-date.selected {
   background: #00a5aa;
   color: white;
-  border-color: #00a5aa;
+  border: 1px solid rgba(240, 241, 245, 1);
+}
+.time-lattice-date.selecting {
+  background: #00a5aa;
+  color: white;
   border: 1px solid rgba(240, 241, 245, 1);
 }
 .time-lattice-date.selected:hover {

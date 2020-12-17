@@ -1,14 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { DeselectAll } from 'react-selectable-fast'
-import Item from '../Item/Item';
-import HourItem from '../hourItem/hourItem';
+import { Card } from '../cards';
 
 export default class List extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      tips: ''
     }
   }
 
@@ -19,13 +17,9 @@ export default class List extends Component {
     })
   }
 
-  setTips = (tips) => {
-    this.setState({
-      tips
-    })
-  }
 
   render() {
+    const { hourList,items,tips } = this.props
     return (
       <Fragment>
         <div className="warpper-date">
@@ -34,17 +28,15 @@ export default class List extends Component {
           </div>
           <div className="date-time-list">
             <div className="time-lattice-wrapper">
-              {this.props.hourList.map((item, i) => (
-                <HourItem
-                  key={i}
-                  title={item.title}
-                  value={item}
-                />
+              {hourList && hourList.map((item, i) => (
+                <div className='time-lattice-item not-selectable' key={item.title}>
+                {item.title}
+              </div>
               ))}
             </div>
             <div className="time-lattice-wrapper">
-              {this.props.items.map((item, i) => (
-                <Item
+              {items && items.map((item, i) => (
+                <Card
                   key={i}
                   value={item}
                   isSelected={item.isSelected}
@@ -53,8 +45,8 @@ export default class List extends Component {
             </div>
           </div>
         </div>
-        <div className="time-lattice-button-wrapper">
-          <span className="time-lattice-tips">{this.props.tips}</span>
+        <div className="time-lattice-button-wrapper not-selectable">
+          <span className="time-lattice-tips">{tips}</span>
           <DeselectAll className="time-lattice-button">
             <div className="text">清除</div>
           </DeselectAll>
