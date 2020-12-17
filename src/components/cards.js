@@ -14,13 +14,12 @@ export const Card =createSelectable(props => {
   }
 
   return (
-    <Popover content={generateTimePeriodExhibition(value)} >
+    // <Popover content={generateTimePeriodExhibition(value)} >
       <div 
         className={cs('time-lattice-date', 
         { selected: isSelected, selecting: isSelecting})} 
         ref={selectableRef}>
-          <Popover content={generateTimePeriodExhibition(value)}></Popover>
       </div>
-     </Popover>
+    //  </Popover>
   )
 })
