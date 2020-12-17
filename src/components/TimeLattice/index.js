@@ -23,9 +23,6 @@ class TimeLattice extends Component {
     this.generateItemsHour()
     this.generateItems()
   }
-  getSelectableGroupRef = (ref) => {
-    window.selectableGroup = ref
-  }
 
   handleSelectionFinish = selectedItems => {
     const arr = selectedItems.map(item => {
@@ -48,7 +45,7 @@ class TimeLattice extends Component {
       groupedData,
       tips
     }, () => {
-      this.generrateTimeObject()
+      // this.generrateTimeObject()
     })
     this.props.onChange.call(this, indexList)
 
@@ -82,8 +79,6 @@ class TimeLattice extends Component {
       )
     })
   }
-
-  // 生成每个时间段展示
   generateTime = (source) => {
     return source.map(item => {
       let column = item[item.length - 1].column
@@ -97,7 +92,6 @@ class TimeLattice extends Component {
     let row = -2;
     for (let i = 0; i <24; i++) {
       let data = {}
-      // 生成小时框显示
       if (i < 25) {
         if (i < 10) {
           data.title = `0${i}`;
@@ -105,15 +99,11 @@ class TimeLattice extends Component {
           data.title = i;
         }
       }
-      // aaa代表星期几， 从0开始， 0-星期一
       if (i % 24 === 0) {
         row++
       }
       data.row = row;
-
-      // 时间点 0-24
       data.column = i % 24;
-
       // 下标
       data.index = i;
 
@@ -129,25 +119,18 @@ class TimeLattice extends Component {
     let selectedItems = [];
     for (let i = 0; i < 7 * 48; i++) {
       let data = {}
-
-      // aaa代表星期几， 从0开始， 0-星期一
       if (i % 48 === 0) {
         row++
       }
       data.row = row;
-
-      // 时间点 0-24
+      // 时间0-24
       data.column = i % 48;
-
-      // 下标
       data.index = i;
-
-      // 设置默认选中
+      // 默认选中
       if (this.props.defaultSelected && this.props.defaultSelected.includes(i)) {
         data.isSelected = true;
         selectedItems.push({ props: { value: data } });
       }
-
       arr.push(data);
     }
     this.setState({
@@ -228,12 +211,13 @@ class TimeLattice extends Component {
     const { hourList, items, tips } = this.state
     return (
       <Fragment>
-        <div className="time-lattice-title-wrapper">
+        {/* <div className="time-lattice-title-wrapper">
           <div className="time-date-title-name">星期/时间</div>
           <div className="time-lattice-title">00:00-12:00</div>
           <div className="time-lattice-title">12:00-24:00</div>
-        </div>
+        </div> */}
          <SelectableGroup
+            scrollContainer="html"
             enableDeselect={true}
             tolerance={0} 
             globalMouse={true}
