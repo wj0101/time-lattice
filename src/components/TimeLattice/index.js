@@ -45,7 +45,7 @@ class TimeLattice extends Component {
       groupedData,
       tips
     }, () => {
-      // this.generrateTimeObject()
+      this.generrateTimeObject()
     })
     this.props.onChange.call(this, indexList)
 
