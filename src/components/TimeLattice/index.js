@@ -209,28 +209,37 @@ class TimeLattice extends Component {
       this.props.onSelectionFinish.call(this, propsObj)
     }
   }
+  getSelectableGroupRef = (ref) => {
+    window.selectableGroup = ref
+  }
   render() {
     const { hourList, items, tips } = this.state
+    const { showSelectableGroup = true } = this.props
     return (
-      <Fragment>
+      <div>
         <div className="time-lattice-title-wrapper">
           <div className="time-date-title-name">星期/时间</div>
           <div className="time-lattice-title">00:00-12:00</div>
           <div className="time-lattice-title">12:00-24:00</div>
         </div>
-         <span></span>
-         <SelectableGroup
-            scrollContainer="span"
+        {showSelectableGroup && (
+          <SelectableGroup
+            ref={this.getSelectableGroupRef}
+            className="main"
+            clickClassName="tick"
             enableDeselect={true}
-            tolerance={0} 
-            allowClickWithoutSelected={true}
+            tolerance={0}
+            deselectOnEsc={true}
+            allowClickWithoutSelected={false}
             onSelectionFinish={this.handleSelectionFinish}
             ignoreList={['.not-selectable']}
           >
             <List hourList={hourList} items={items} tips={tips}/>
           </SelectableGroup>
+        )}
+         
         {this.generateTimePeriodExhibition()}
-      </Fragment>
+      </div>
     )
   }
 }
