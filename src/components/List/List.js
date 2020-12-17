@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment,memo } from 'react'
 import { DeselectAll } from 'react-selectable-fast'
 import { Card } from '../cards';
 
-export default class List extends Component {
+class List extends Component {
 
   constructor(props) {
     super(props);
@@ -55,3 +55,6 @@ export default class List extends Component {
     )
   }
 }
+
+export default memo(List);
+

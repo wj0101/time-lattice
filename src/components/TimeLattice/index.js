@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment,memo } from 'react'
 import { SelectableGroup } from 'react-selectable-fast'
 import List from '../List/List'
 import { deepClone } from '../../utils'
@@ -10,7 +10,7 @@ function prefixNum(num) {
   }
   return num;
 }
-export default class TimePeriodSelector extends Component {
+class TimeLattice extends Component {
   state = {
     hourList:[],
     items:[],
@@ -250,3 +250,5 @@ export default class TimePeriodSelector extends Component {
     )
   }
 }
+
+export default memo(TimeLattice);
