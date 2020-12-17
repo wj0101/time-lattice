@@ -218,11 +218,11 @@ class TimeLattice extends Component {
           <div className="time-lattice-title">00:00-12:00</div>
           <div className="time-lattice-title">12:00-24:00</div>
         </div>
+         <span></span>
          <SelectableGroup
-            scrollContainer="div"
+            scrollContainer="span"
             enableDeselect={true}
             tolerance={0} 
-            globalMouse={true}
             allowClickWithoutSelected={true}
             onSelectionFinish={this.handleSelectionFinish}
             ignoreList={['.not-selectable']}
