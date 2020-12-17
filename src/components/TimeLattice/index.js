@@ -234,10 +234,10 @@ class TimeLattice extends Component {
           <div className="time-lattice-title">12:00-24:00</div>
         </div>
          <SelectableGroup
-            ref={this.getSelectableGroupRef}
-            enableDeselect
+            enableDeselect={true}
             tolerance={0}
-            allowClickWithoutSelected={true}
+            globalMouse={true}
+            allowClickWithoutSelected={false}
             onSelectionFinish={this.handleSelectionFinish}
             ignoreList={['.not-selectable']}
           >
