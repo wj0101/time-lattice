@@ -1,4 +1,4 @@
-import React, { Component, Fragment,memo } from 'react'
+import React, { Component, Fragment } from 'react'
 import { SelectableGroup } from 'react-selectable-fast'
 import List from '../List/List'
 import { deepClone } from '../../utils'
@@ -10,49 +10,20 @@ function prefixNum(num) {
   }
   return num;
 }
-class TimeLattice extends Component {
-  state = {
-    hourList:[],
-    items:[],
-    groupedData: [],
-    tips: '',
-    timeObj: {},
-  }
-  
-  componentDidMount(){
-    this.generateItemsHour()
-    this.generateItems()
-  }
-  getSelectableGroupRef = (ref) => {
-    window.selectableGroup = ref
+export default class TimePeriodSelector extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tolerance: true,
+      globalMouse: true,
+      items: [],
+      groupedData: [],
+      tips: ``,
+      timeObj: {},
+      hourList:[]
+    }
   }
 
-  handleSelectionFinish = selectedItems => {
-    const arr = selectedItems.map(item => {
-      return item.props.value
-    })
-    // 排序
-    arr.sort((a, b) => {
-      return a.index - b.index
-    })
-    let indexList = arr.map(item => item.index)
-    // 分组
-    const groupedData = this.arrange(arr);
-    let tips;
-    if (groupedData.length > 0) {
-      tips = `已选择时间段`
-    } else {
-      tips = '拖动鼠标选择时间段'
-    }   
-    this.setState({
-      groupedData,
-      tips
-    }, () => {
-      this.generrateTimeObject()
-    })
-    this.props.onChange.call(this, indexList)
-
-  }
   arrange = (source) => {
     let t;
     let ta;
@@ -74,87 +45,47 @@ class TimeLattice extends Component {
     return r;
   }
 
-    // 生成展示
-  generateTimePeriodExhibition = () => {
-    return Object.keys(this.state.timeObj).map((key, i) => {
-      return (
-        <p key={i} className="time-lattice-ex"><span className="time-lattice-time">{key}</span>{this.generateTime(this.state.timeObj[key])}</p>
-      )
-    })
+  handleSelecting = (e) => {
+    // console.log(e)
   }
-
-  // 生成每个时间段展示
-  generateTime = (source) => {
-    return source.map(item => {
-      let column = item[item.length - 1].column
-      let up = Math.round(column/2)
-      let down = Math.floor(item[0].column / 2)
-      return `${prefixNum(down)}:${item[0].column%2 ==0 ? '00' : '30'} ~ ${prefixNum(up)}:${column%2 ==0 ? '30' : '00'};\xa0\xa0`
+  handleSelectionClear = () => { }
+  handleSelectionFinish = (selectedItems) => {
+    // 获取选中items;
+    const arr = selectedItems.map(item => {
+      // delete item.props.value.isSelected;
+      return item.props.value
     })
-  }
-  generateItemsHour = () => {
-    let arr = [];
-    let row = -2;
-    for (let i = 0; i <24; i++) {
-      let data = {}
-      // 生成小时框显示
-      if (i < 25) {
-        if (i < 10) {
-          data.title = `0${i}`;
-        } else {
-          data.title = i;
-        }
-      }
-      // aaa代表星期几， 从0开始， 0-星期一
-      if (i % 24 === 0) {
-        row++
-      }
-      data.row = row;
 
-      // 时间点 0-24
-      data.column = i % 24;
+    // 排序
+    arr.sort((a, b) => {
+      return a.index - b.index
+    })
 
-      // 下标
-      data.index = i;
-
-      arr.push(data);
+    // 分组
+    const groupedData = this.arrange(arr);
+    let tips;
+    if (groupedData.length > 0) {
+      tips = `已选择时间段`
+    } else {
+      tips = '拖动鼠标选择时间段'
     }
+    let newarr = Array.prototype.concat.apply([], groupedData);
+    let indexList = newarr.map(item => item.index)
     this.setState({
-      hourList:arr
+      groupedData,
+      tips
+    }, () => {
+      this.generrateTimeObject()
     })
+    this.props.onChange.call(this, indexList)
+
   }
-  generateItems = () => {
-    let arr = [];
-    let row = -1;
-    let selectedItems = [];
-    for (let i = 0; i < 7 * 48; i++) {
-      let data = {}
 
-      // aaa代表星期几， 从0开始， 0-星期一
-      if (i % 48 === 0) {
-        row++
-      }
-      data.row = row;
+  // 给父组件传参，抹平index差异
+  emit2ParentComponentObj = () => {
 
-      // 时间点 0-24
-      data.column = i % 48;
+  }
 
-      // 下标
-      data.index = i;
-
-      // 设置默认选中
-      if (this.props.defaultSelected && this.props.defaultSelected.includes(i)) {
-        data.isSelected = true;
-        selectedItems.push({ props: { value: data } });
-      }
-
-      arr.push(data);
-    }
-    this.setState({
-      items: arr
-    })
-    this.handleSelectionFinish(selectedItems);
-  } 
   // 生成时间对象
   generrateTimeObject = () => {
     const timeObj = {}
@@ -224,8 +155,97 @@ class TimeLattice extends Component {
       this.props.onSelectionFinish.call(this, propsObj)
     }
   }
+
+  // 生成展示
+  generateTimePeriodExhibition = () => {
+    return Object.keys(this.state.timeObj).map((key, i) => {
+      return (
+        <p key={i} className="time-lattice-ex"><span className="time-lattice-time">{key}</span>{this.generateTime(this.state.timeObj[key])}</p>
+      )
+    })
+  }
+
+  // 生成每个时间段展示
+  generateTime = (source) => {
+    return source.map(item => {
+      let column = item[item.length - 1].column
+      let up = Math.round(column/2)
+      let down = Math.floor(item[0].column / 2)
+      return `${prefixNum(down)}:${item[0].column%2 ==0 ? '00' : '30'} ~ ${prefixNum(up)}:${column%2 ==0 ? '30' : '00'};\xa0\xa0`
+    })
+  }
+  generateItemsHour = () => {
+    let arr = [];
+    let row = -2;
+    for (let i = 0; i <24; i++) {
+      let data = {}
+
+      // 生成小时框显示
+      if (i < 25) {
+        if (i < 10) {
+          data.title = `0${i}`;
+        } else {
+          data.title = i;
+        }
+      }
+
+      // aaa代表星期几， 从0开始， 0-星期一
+      if (i % 24 === 0) {
+        row++
+      }
+      data.row = row;
+
+      // 时间点 0-24
+      data.column = i % 24;
+
+      // 下标
+      data.index = i;
+
+      arr.push(data);
+    }
+    this.setState({
+      hourList:arr
+    })
+  }
+  generateItems = () => {
+    let arr = [];
+    let row = -1;
+    let selectedItems = [];
+    for (let i = 0; i < 7 * 48; i++) {
+      let data = {}
+
+      // aaa代表星期几， 从0开始， 0-星期一
+      if (i % 48 === 0) {
+        row++
+      }
+      data.row = row;
+
+      // 时间点 0-24
+      data.column = i % 48;
+
+      // 下标
+      data.index = i;
+
+      // 设置默认选中
+      if (this.props.defaultSelected && this.props.defaultSelected.includes(i)) {
+        data.isSelected = true;
+        selectedItems.push({ props: { value: data } });
+      }
+
+      arr.push(data);
+    }
+    this.setState({
+      items: arr
+    })
+    this.handleSelectionFinish(selectedItems);
+  }
+
+  componentDidMount() {
+    this.generateItems();
+    this.generateItemsHour()
+  }
+
   render() {
-    const { hourList, items, tips } = this.state
     return (
       <Fragment>
         <div className="time-lattice-title-wrapper">
@@ -233,20 +253,20 @@ class TimeLattice extends Component {
           <div className="time-lattice-title">00:00-12:00</div>
           <div className="time-lattice-title">12:00-24:00</div>
         </div>
-         <SelectableGroup
-            enableDeselect={true}
-            tolerance={0} 
-            globalMouse={true}
-            allowClickWithoutSelected={true}
-            onSelectionFinish={this.handleSelectionFinish}
-            ignoreList={['.not-selectable']}
-          >
-            <List hourList={hourList} items={items} tips={tips}/>
-          </SelectableGroup>
+        <SelectableGroup
+          enableDeselect
+          tolerance={this.state.tolerance}
+          globalMouse={this.state.isGlobal}
+          allowClickWithoutSelected={true}
+          duringSelection={this.handleSelecting}
+          onSelectionClear={this.handleSelectionClear}
+          onSelectionFinish={this.handleSelectionFinish}
+          ignoreList={['.not-selectable']}
+        >
+          <List items={this.state.items} hourList={this.state.hourList} ref={this.listHook} tips={this.state.tips} />
+        </SelectableGroup>
         {this.generateTimePeriodExhibition()}
       </Fragment>
     )
   }
 }
-
-export default TimeLattice

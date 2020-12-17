@@ -1,6 +1,6 @@
 import React, { Component, Fragment,memo } from 'react'
 import { DeselectAll } from 'react-selectable-fast'
-import { Card } from '../cards';
+import Item from '../Item/Item';
 
 const List = memo(props => {
   const { hourList,items,tips } = props
@@ -27,7 +27,7 @@ const List = memo(props => {
         </div>
         <div className="time-lattice-wrapper">
           {items && items.map((item, i) => (
-            <Card
+            <Item
               key={i}
               value={item}
               isSelected={item.isSelected}
