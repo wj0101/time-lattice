@@ -213,13 +213,13 @@ class TimeLattice extends Component {
     const { hourList, items, tips } = this.state
     return (
       <Fragment>
-        {/* <div className="time-lattice-title-wrapper">
+        <div className="time-lattice-title-wrapper">
           <div className="time-date-title-name">星期/时间</div>
           <div className="time-lattice-title">00:00-12:00</div>
           <div className="time-lattice-title">12:00-24:00</div>
-        </div> */}
+        </div>
          <SelectableGroup
-            // scrollContainer="html"
+            scrollContainer="div"
             enableDeselect={true}
             tolerance={0} 
             globalMouse={true}
