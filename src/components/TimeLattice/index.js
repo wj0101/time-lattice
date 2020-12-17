@@ -251,4 +251,4 @@ class TimeLattice extends Component {
   }
 }
 
-export default memo(TimeLattice);
+export default TimeLattice
