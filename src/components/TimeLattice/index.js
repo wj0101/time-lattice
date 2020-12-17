@@ -236,8 +236,7 @@ class TimeLattice extends Component {
          <SelectableGroup
             ref={this.getSelectableGroupRef}
             enableDeselect
-            tolerance={true}
-            globalMouse={true}
+            tolerance={0}
             allowClickWithoutSelected={true}
             onSelectionFinish={this.handleSelectionFinish}
             ignoreList={['.not-selectable']}
