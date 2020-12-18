@@ -129,7 +129,7 @@ class TimeLattice extends Component {
       data.column = i % 48;
       data.index = i;
       // 默认选中
-      if (this.props.defaultSelected && this.props.defaultSelected.includes(i)) {
+      if (this.props.value && this.props.value.includes(i)) {
         data.isSelected = true;
         selectedItems.push({ props: { value: data } });
       }
