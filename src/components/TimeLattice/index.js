@@ -20,10 +20,20 @@ class TimeLattice extends Component {
   }
   
   componentDidMount(){
+    console.log(this.props.value)
     this.generateItemsHour()
     this.generateItems()
   }
+  UNSAFE_componentWillReceiveProps (nextProps) {
+    const { value = [] } = this.props
+    let haveval = value.filter(item => nextProps.value.indexOf(item) === -1)
+    if(haveval.length>0){
 
+    }
+    if(value.length === 0 && nextProps.value.length > 0 ){
+      this.generateItems(nextProps.value)
+    }
+  }
   handleSelectionFinish = selectedItems => {
     const arr = selectedItems.map(item => {
       return item.props.value
@@ -115,7 +125,7 @@ class TimeLattice extends Component {
       hourList:arr
     })
   }
-  generateItems = () => {
+  generateItems = (valueList) => {
     let arr = [];
     let row = -1;
     let selectedItems = [];
@@ -129,7 +139,7 @@ class TimeLattice extends Component {
       data.column = i % 48;
       data.index = i;
       // 默认选中
-      if (this.props.value && this.props.value.includes(i)) {
+      if (this.props.value && this.props.value.includes(i) || valueList && valueList.includes(i)) {
         data.isSelected = true;
         selectedItems.push({ props: { value: data } });
       }
